@@ -1,0 +1,301 @@
+// Importing Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+//------GENERAL SETTINGS -------------------------------
+
+// Universal reset also explicitly to all pseudo-elements
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Define color variables
+$colors: (
+  'moderate-violet': hsl(263, 76%, 64%),
+  'light-violet': hsl(263, 71%, 79%),
+  'dark-grayish-blue': hsl(217, 42%, 45%),
+  'dark-blue-gray': hsl(219, 29%, 14%),
+  'white': hsl(0, 0%, 100%),
+  'black': hsl(0, 0%, 0%),
+  'light-gray': hsl(0, 0%, 81%),
+  'light-grayish-blue': hsl(211, 42%, 84%),
+);
+
+// Function to retrieve colors
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+// Typography Mixin with parameters
+@mixin typography($weight, $size, $line-height, $color) {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  color: $color;
+}
+
+// Base styles
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: color('light-grayish-blue');
+  //background-color: aqua; // for testing
+}
+
+main {
+  flex: 1 0 auto; /*shorthand for three properties: flex-grow, flex-shrink, and flex-basis. This especially usefull to keep the footer always bellow the content but read the NOTE bellow to prevent issues */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0rem;
+  // background-color:chartreuse;
+}
+
+// Container styles for mobiles
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto; /* This was the solution to the BIG 🐞, it centers the container horizontally by adding equal margins to the left and right. */
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  align-items: center;
+  padding: 20px;
+  // background-color: aqua;
+}
+
+// Card styling with nested classes for author section , colors and typography
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative; // This allows for absolute positioning inside
+  border-radius: 15px;
+  padding: 2rem 2rem 2rem 2rem;
+  margin-bottom: 2rem;
+  z-index: 0;
+  transition: transform 0.5s;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0 0 0 / 40%);
+
+  &:hover {
+    // Correct hover syntax using &
+    transform: scale(1.05); // Scales the card by 5% on hover
+  }
+
+  // Define common styles for .photo under .author to ensure specificity
+  .author .photo {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%; // Ensures the image is round
+    margin-right: 0.5rem;
+  }
+
+  // img {
+  //   display: block; // Remove any extra space below the image
+  //   // Set the width and height as needed
+  // }
+
+  &.quoteSymbol {
+    position: absolute;
+    width: 200px;
+    margin-top: 0px; // Align to the top edge of the card
+    margin-left: 205px; // 10px from the right edge
+    transform: scaleY(1rem), scaleX(0.2); // Move it above the card
+    z-index: 1; // Under the text
+    // background-color: darkgreen;
+  }
+
+  &.quote {
+    // position: relative;
+    margin-top: 10px;
+    z-index: 3;
+    margin-bottom: 1rem;
+  }
+
+  &.paragraph {
+    margin-bottom: 1rem;
+    z-index: 3;
+  }
+
+  &.bgDaniel {
+    background-image: url('../assets/images/bg-pattern-quotation+dark_purple.svg');
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 0%;
+    background-size: 50%; // Width and height of the background image
+    background-color: color('moderate-violet');
+    .name,
+    .quote {
+      @include typography(600, '1.2rem', 1.5, color('white'));
+    }
+    .profession,
+    .paragraph {
+      @include typography(500, '1rem', 1.5, color('light-violet'));
+    }
+    .photo {
+      border: 4px solid color('light-violet');
+    }
+  }
+
+  &.bgJonathan {
+    background-color: color('dark-grayish-blue');
+    background-image: url('../assets/images/bg-pattern-quotation+dark_gray.svg');
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 0%;
+    background-size: 50%; // Width and height of the background image
+    .name,
+    .quote {
+      @include typography(600, '1.2rem', 1.5, color('white'));
+    }
+    .profession,
+    .paragraph {
+      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
+    }
+    .photo {
+      border: 4px solid color('light-grayish-blue');
+    }
+  }
+
+  &.bgJeanette {
+    background-color: color('white');
+    background-image: url('../assets/images/bg-pattern-quotation+lighter_gray.svg');
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 0%;
+    background-size: 50%; // Width and height of the background image
+    .name,
+    .quote {
+      @include typography(600, '1.2rem', 1.5, color('dark-grayish-blue'));
+    }
+    .profession,
+    .paragraph {
+      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
+    }
+    .photo {
+      border: 4px solid color('light-grayish-blue');
+    }
+  }
+
+  &.bgPatrick {
+    background-color: color('dark-blue-gray');
+    background-image: url('../assets/images/bg-pattern-quotation+blue_purple.svg');
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 0%;
+    background-size: 50%; // Width and height of the background image
+    .name,
+    .quote {
+      @include typography(600, '1.2rem', 1.5, color('white'));
+    }
+    .profession,
+    .paragraph {
+      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
+    }
+    .photo {
+      border: 4px solid color('light-violet');
+    }
+  }
+
+  &.bgKira {
+    background-color: color('white');
+    background-image: url('../assets/images/bg-pattern-quotation+lighter_gray.svg');
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 0%;
+    background-size: 50%; // Width and height of the background image
+    .name,
+    .quote {
+      @include typography(600, '1.2rem', 1.5, color('dark-grayish-blue'));
+    }
+    .profession,
+    .paragraph {
+      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
+    }
+    .photo {
+      border: 4px solid color('light-grayish-blue');
+    }
+  }
+}
+
+.attribution {
+  text-align: center;
+  margin-bottom: 3rem; /* Keeps the footer at the bottom but only after all other content */
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // Creates 4 equal columns
+    align-items: start; // Aligns items to the start of their cell
+    grid-auto-rows: minmax(250px, auto); // Ensures that rows are at least 250px tall
+    grid-gap: 20px; // Maintains a fixed gap
+    width: 80%;
+    padding: 20px;
+    margin-top: 100px;
+    align-items: stretch; // Stretches items to fill the grid row height
+  }
+  .card {
+    min-height: 300px; // Sets a minimum height and allows expansion based on content
+    margin: 0rem;
+  }
+  // Card 1 (Daniel) takes the first row and spans two columns
+  .card:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+
+  // Card 2 (Jonathan) is placed in the first row, third column
+  .card:nth-child(2) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  // Card 3 (Jeanette) takes the second row, first column
+  .card:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  // Card 4 (Patrick) starts at the second column and spans two columns in the second row
+  .card:nth-child(4) {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+  }
+
+  // Card 5 (Kira) occupies the entire fourth column, and should align with Card 2's top
+  .card:nth-child(5) {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+  }
+}
+
+/* ============= NOTES  ============== */
+/* The flex: 1 0 auto; declaration is not a one-size-fits-all solution and should not be applied universally to the <main> element as a best practice. It's a tool that should be used to achieve specific layout goals depending on the design requirements.
+
+✅ Here are some considerations for when to use flex: 1 0 auto; on the <main> element:
+
+Sticky Footer: If your design requires that the footer stays at the bottom of the viewport even when the content is short, then using flex: 1 0 auto; on <main> is a common solution. It allows <main> to expand and fill the available space, pushing the footer to the bottom.
+Full-Height Sections: In single-page applications or designs where sections of the page should fill the viewport height, flex: 1 0 auto; helps to ensure that <main> covers the full height of the viewport if the content is not enough.
+Dynamic Content: When the amount of content is dynamic and can vary greatly, flex: 1 0 auto; can help maintain a consistent layout across different states.
+
+However, 🚩there are scenarios where you might not want to use flex: 1 0 auto;:
+
+Content-Driven Layout: If the height of the <main> content should naturally dictate the layout without stretching, you should not force it to expand with flex-grow.
+Scrolling Content: If the <main> content is expected to scroll internally while keeping the header and footer fixed, a flex-grow of 1 could be undesirable.
+Nested Flex Containers: If <main> is a flex container with its own flex items and a specific design, the flex-grow property might interfere with the intended layout. */
