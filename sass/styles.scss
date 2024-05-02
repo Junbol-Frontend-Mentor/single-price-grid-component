@@ -167,7 +167,6 @@ main {
   background-color: color('light-cyan');
   &__title {
     transition: transform 0.5s ease;
-    @include typography(700, 1.5rem, 1.5, color('white'));
     margin-bottom: 1.5rem;
     &:hover {
       transform: scale(1.05); // Scales the card by 5% on hover

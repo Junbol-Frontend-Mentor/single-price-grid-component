@@ -153,11 +153,6 @@ main {
 }
 .whyUs__title {
   transition: transform 0.5s ease;
-  font-family: "Karla", sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  color: hsl(0, 0%, 100%);
   margin-bottom: 1.5rem;
 }
 .whyUs__title:hover {
