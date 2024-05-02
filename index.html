@@ -6,10 +6,10 @@
     <!-- displays site properly based on user's device -->
 
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link rel="stylesheet" href="./css/styles.css" />
 
     <title>Frontend Mentor | Single Price Grid Component</title>
 
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
       .attribution {
         font-size: 11px;
@@ -21,10 +21,34 @@
     </style>
   </head>
   <body>
-    Join our community 30-day, hassle-free money back guarantee Gain access to our full library of tutorials along with expert code reviews. Perfect
-    for any developers who are serious about honing their skills. Monthly Subscription &dollar;29 per month Full access for less than &dollar;1 a day
-    Sign Up Why Us Tutorials by industry experts Peer &amp; expert code review Coding exercises Access to our GitHub repos Community forum Flashcard
-    decks New videos every week
+    <main>
+      <section class="container">
+        <section class="card legend">
+          <h2 class="legend__title">Join our community</h2>
+          <h4 class="legend__subtitle">30-day, hassle-free money back guarantee</h4>
+          <p class="legend__paragraph">
+            Gain access to our full library of tutorials along with expert code reviews. Perfect for any developers who are serious about honing their
+            skills.
+          </p>
+        </section>
+      </section>
+      <section class="card subscription">
+        <h2 class="subscription__title">Monthly Subscription</h2>
+        <div class="priceGroup">
+          <h1 class="priceGroup__price">$29</h1>
+          <h3 class="priceGroup__xMonth">per month</h3>
+        </div>
+        <section class="subscription__offer">Full access for less than $1 a day</section>
+        <button class="subscription__btn">Sign Up</button>
+      </section>
+      <section class="card whyUs">
+        <h2 class="whyUs__title">Why Us</h2>
+        <p class="whyUs__paragraph">
+          Tutorials by industry experts Peer & expert code review Coding exercises Access to our GitHub repos Community forum Flashcard decks
+          Newvideos every week
+        </p>
+      </section>
+    </main>
 
     <footer>
       <p class="attribution">
