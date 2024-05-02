@@ -1,6 +1,6 @@
 # Frontend Mentor - Single price grid component solution
 
-This is a solution to the [Single price grid component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/single-price-grid-component-5ce41129d0ff452fec5abbbc). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Single price grid component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/single-price-grid-component-5ce41129d0ff452fec5abbbc). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -25,8 +25,8 @@ This is a solution to the [Single price grid component challenge on Frontend Men
 
 ### Links
 
-- Solution URL: (https://github.com/Junbol-Frontend-Mentor/testimonials-grid)
-- Live Site URL: (https://junbol-frontend-mentor.github.io/testimonials-grid/)
+- Solution URL: (https://github.com/Junbol-Frontend-Mentor/single-price-grid-component)
+- Live Site URL: (https://junbol-frontend-mentor.github.io/single-price-grid-component/)
 
 ## My process
 
