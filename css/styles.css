@@ -1,3 +1,210 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swa");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: hsl(211, 42%, 84%);
+}
+
+main {
+  flex: 1 0 auto; /*shorthand for three properties: flex-grow, flex-shrink, and flex-basis. This especially usefull to keep the footer always bellow the content but read the NOTE bellow to prevent issues */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto; /* This was the solution to the BIG 🐞, it centers the container horizontally by adding equal margins to the left and right. */
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 2rem;
+}
+
+.legend {
+  background-color: hsl(0, 0%, 100%);
+}
+.legend__title {
+  transition: transform 0.5s ease;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: hsl(179, 62%, 43%);
+  margin-bottom: 1.5rem;
+}
+.legend__title:hover {
+  transform: scale(1.05);
+}
+.legend__subtitle {
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: hsl(71, 83%, 50%);
+  margin-bottom: 1.5rem;
+}
+.legend__paragraph {
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.subscription {
+  background-color: hsl(179, 62%, 43%);
+}
+.subscription__title {
+  transition: transform 0.5s ease;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: hsl(0, 0%, 100%);
+  margin-bottom: 1.5rem;
+}
+.subscription__title:hover {
+  transform: scale(1.05);
+}
+.subscription .priceGroup {
+  display: flex;
+  justify-content: left;
+  align-items: self-end;
+  margin-bottom: 1.5rem;
+}
+.subscription .priceGroup__price {
+  height: 3rem;
+  width: 4rem;
+  transition: transform 0.5s ease;
+  margin-right: 1.5rem;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color: hsl(0, 0%, 100%);
+}
+.subscription .priceGroup__price:hover {
+  transform: scale(1.05);
+  color: hsl(71, 83%, 50%);
+}
+.subscription .priceGroup__xMonth {
+  font-family: "Karla", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: hsl(204, 43%, 93%);
+}
+.subscription__offer {
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: hsl(204, 43%, 93%);
+  margin-bottom: 2rem;
+}
+.subscription__btn {
+  background-color: hsl(71, 72%, 46%);
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: hsl(0, 0%, 100%);
+  width: 120px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 7px;
+  border-style: none;
+  margin: 0 auto;
+  transition: transform 0.5s ease;
+}
+.subscription__btn:hover {
+  transform: scale(1.05);
+  background-color: hsl(71, 83%, 50%);
+}
+
+.whyUs {
+  background-color: hsl(179, 49%, 49%);
+}
+.whyUs__title {
+  transition: transform 0.5s ease;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: hsl(0, 0%, 100%);
+  margin-bottom: 1.5rem;
+}
+.whyUs__title:hover {
+  transform: scale(1.05);
+}
+.whyUs__paragraph {
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: hsl(204, 43%, 93%);
+}
+
+.attribution {
+  text-align: center;
+  margin-bottom: 3rem; /* Keeps the footer at the bottom but only after all other content */
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+}
+
+@media (min-width: 450px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "legend legend" "subscription whyUs" "footer footer";
+    gap: 20px;
+    width: 80%;
+    padding: 20px;
+    margin-top: 100px;
+  }
+  .legend {
+    grid-area: legend;
+  }
+  .subscription {
+    grid-area: subscription;
+  }
+  .whyUs {
+    grid-area: whyUs;
+  }
+  .attribution {
+    grid-area: footer;
+  }
+}
+/* ============= NOTES  ============== */
 
 /*# sourceMappingURL=styles.css.map */

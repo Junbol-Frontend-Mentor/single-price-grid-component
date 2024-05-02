@@ -16,7 +16,8 @@
 $colors: (
   'cyan': hsl(179, 62%, 43%),
   'light-cyan': hsl(179, 49%, 49%),
-  'bright-yellow': hsl(71, 73%, 54%),
+  'bright-yellow': hsl(71, 83%, 50%),
+  'dark-yellow': hsl(71, 72%, 46%),
   'light-gray': hsl(204, 43%, 93%),
   'grayish-blue': hsl(219, 29%, 14%),
   'light-grayish-blue': hsl(211, 42%, 84%),
@@ -68,24 +69,26 @@ main {
   width: 100%;
   margin: 0 auto; /* This was the solution to the BIG 🐞, it centers the container horizontally by adding equal margins to the left and right. */
   align-items: center;
-  // background-color: aqua;
+  margin-bottom: 1.5rem;
+  //background-color: aqua;
 }
 
 // Card styling with nested classes for author section , colors and typography
+
 .card {
   width: 100%;
+  height: 100%; // this ensures all panels are the same height regardless the size of it content
   display: flex;
   flex-direction: column;
   position: relative; // This allows for absolute positioning inside
   padding: 2rem;
-  // background-color: coral;
+  //background-color: coral;
 }
-
-//cursor: pointer;
 
 .legend {
   background-color: color('white');
   &__title {
+    transition: transform 0.5s ease;
     @include typography(700, 1.5rem, 1.5, color('cyan'));
     margin-bottom: 1.5rem;
     &:hover {
@@ -97,13 +100,14 @@ main {
     margin-bottom: 1.5rem;
   }
   &__paragraph {
-    @include typography(400, 1rem, 1.5, color('grayish_lblue'));
+    @include typography(400, 1.2rem, 1.5, color('grayish_lblue'));
   }
 }
 
 .subscription {
   background-color: color('cyan');
   &__title {
+    transition: transform 0.5s ease;
     @include typography(700, 1.5rem, 1.5, color('white'));
     margin-bottom: 1.5rem;
     &:hover {
@@ -122,8 +126,13 @@ main {
     &__price {
       height: 3rem;
       width: 4rem;
+      transition: transform 0.5s ease;
       margin-right: 1.5rem;
       @include typography(700, 2.5rem, 1.5, color('white'));
+      &:hover {
+        transform: scale(1.05); // Scales the card by 5% on hover
+        color: color('bright-yellow');
+      }
       // background-color: coral;
     }
 
@@ -138,19 +147,26 @@ main {
   }
 
   &__btn {
-    background-color: color('bright-yellow');
+    background-color: color('dark-yellow');
     @include typography(700, 1.2rem, 1.5, color('white'));
     width: 120px;
     height: 50px;
+    cursor: pointer;
     border-radius: 7px;
     border-style: none;
     margin: 0 auto;
+    transition: transform 0.5s ease;
+    &:hover {
+      transform: scale(1.05); // Scales the card by 5% on hover
+      background-color: color('bright-yellow');
+    }
   }
 }
 
 .whyUs {
   background-color: color('light-cyan');
   &__title {
+    transition: transform 0.5s ease;
     @include typography(700, 1.5rem, 1.5, color('white'));
     margin-bottom: 1.5rem;
     &:hover {
@@ -172,50 +188,35 @@ main {
   text-decoration: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 450px) {
   .container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // Creates 4 equal columns
-    align-items: start; // Aligns items to the start of their cell
-    grid-auto-rows: minmax(250px, auto); // Ensures that rows are at least 250px tall
-    grid-gap: 20px; // Maintains a fixed gap
+    grid-template-columns: 1fr 1fr; // Two equal columns
+    grid-template-rows: 1fr 1fr; // First row auto for the header, second row 1fr for content
+    grid-template-areas:
+      'legend legend' // Legend spans both columns
+      'subscription whyUs'
+      'footer footer'; // Subscription and WhyUs each take up half of the second row
+    gap: 20px; // Space between grid items
     width: 80%;
     padding: 20px;
     margin-top: 100px;
-    align-items: stretch; // Stretches items to fill the grid row height
-  }
-  .card {
-    min-height: 300px; // Sets a minimum height and allows expansion based on content
-    margin: 0rem;
-  }
-  // Card 1 (Daniel) takes the first row and spans two columns
-  .card:nth-child(1) {
-    grid-column: 1 / span 2;
-    grid-row: 1;
   }
 
-  // Card 2 (Jonathan) is placed in the first row, third column
-  .card:nth-child(2) {
-    grid-column: 3;
-    grid-row: 1;
+  .legend {
+    grid-area: legend; // Assigns the legend card to the 'legend' area
   }
 
-  // Card 3 (Jeanette) takes the second row, first column
-  .card:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
+  .subscription {
+    grid-area: subscription; // Assigns the subscription card to the 'subscription' area
   }
 
-  // Card 4 (Patrick) starts at the second column and spans two columns in the second row
-  .card:nth-child(4) {
-    grid-column: 2 / span 2;
-    grid-row: 2;
+  .whyUs {
+    grid-area: whyUs; // Assigns the WhyUs card to the 'whyUs' area
   }
 
-  // Card 5 (Kira) occupies the entire fourth column, and should align with Card 2's top
-  .card:nth-child(5) {
-    grid-column: 4;
-    grid-row: 1 / span 2;
+  .attribution {
+    grid-area: footer;
   }
 }
 
