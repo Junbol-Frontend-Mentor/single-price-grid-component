@@ -42,57 +42,45 @@ This is a solution to the [Single price grid component challenge on Frontend Men
 
 ### What I learned
 
-Working with SCSS Grid & MediaQueries
+Working with SCSS Grid Areas
 
 ```
 
-@media (min-width: 768px) {
+
+@media (min-width: 450px) {
   .container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // Creates 4 equal columns
-    grid-gap: 20px; // Adjusting the gap between grid items
-    align-items: start; // Aligns items to the start of their cell
-    grid-auto-rows: minmax(250px, auto); // Ensures that rows are at least 250px tall
-    grid-gap: 20px; // Maintains a fixed gap
+    grid-template-columns: 1fr 1fr; // Two equal columns
+    grid-template-rows: 1fr 1fr; // First row auto for the header, second row 1fr for content
+    grid-template-areas:
+      'legend legend' // Legend spans both columns
+      'subscription whyUs'
+      'footer footer'; // Subscription and WhyUs each take up half of the second row
+    gap: 20px;
     width: 80%;
     padding: 20px;
-    margin-top: 30px;
-    align-items: stretch; // Stretches items to fill the grid row height
-  }
-  .card {
-    min-height: 300px; // Sets a minimum height and allows expansion based on content
-    margin: 0rem;
-  }
-  // Card 1 (Daniel) takes the first row and spans two columns
-  .card:nth-child(1) {
-    grid-column: 1 / span 2;
-    grid-row: 1;
+    margin-top: 100px;
   }
 
-  // Card 2 (Jonathan) is placed in the first row, third column
-  .card:nth-child(2) {
-    grid-column: 3;
-    grid-row: 1;
+  .legend {
+    grid-area: legend; // Assigns the legend card to the 'legend' area
   }
 
-  // Card 3 (Jeanette) takes the second row, first column
-  .card:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
+  .subscription {
+    grid-area: subscription; // Assigns the subscription card to the 'subscription' area
   }
 
-  // Card 4 (Patrick) starts at the second column and spans two columns in the second row
-  .card:nth-child(4) {
-    grid-column: 2 / span 2;
-    grid-row: 2;
+  .whyUs {
+    grid-area: whyUs; // Assigns the WhyUs card to the 'whyUs' area
   }
 
-  // Card 5 (Kira) occupies the entire fourth column, and should align with Card 2's top
-  .card:nth-child(5) {
-    grid-column: 4;
-    grid-row: 1 / span 2;
+  .attribution {
+    grid-area: footer;
   }
 }
+
+
+
 ```
 
 ### Continued development
