@@ -17,7 +17,7 @@ $colors: (
   'cyan': hsl(179, 62%, 43%),
   'light-cyan': hsl(179, 49%, 49%),
   'bright-yellow': hsl(71, 83%, 50%),
-  'dark-yellow': hsl(71, 72%, 46%),
+  'dark-yellow': hsl(71, 80%, 38%),
   'light-gray': hsl(204, 43%, 93%),
   'grayish-blue': hsl(219, 29%, 14%),
   'light-grayish-blue': hsl(211, 42%, 84%),
@@ -96,7 +96,7 @@ main {
     }
   }
   &__subtitle {
-    @include typography(400, 1.5rem, 1.5, color('bright-yellow'));
+    @include typography(400, 1.5rem, 1.5, color('dark-yellow'));
     margin-bottom: 1.5rem;
   }
   &__paragraph {
@@ -166,6 +166,7 @@ main {
 .whyUs {
   background-color: color('light-cyan');
   &__title {
+    @include typography(700, 1.5rem, 1.5, color('white'));
     transition: transform 0.5s ease;
     margin-bottom: 1.5rem;
     &:hover {
@@ -173,7 +174,7 @@ main {
     }
   }
   &__paragraph {
-    @include typography(400, 1rem, 1.5, color('light-gray'));
+    @include typography(400, 1rem, 1.5, color('white'));
   }
 }
 
